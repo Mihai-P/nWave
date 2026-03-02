@@ -1,0 +1,57 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONPATH=${CLAUDE_PLUGIN_ROOT}/scripts python3 -m des.adapters.drivers.hooks.claude_code_hook_adapter pre-task"
+          }
+        ],
+        "matcher": "Task"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONPATH=${CLAUDE_PLUGIN_ROOT}/scripts python3 -m des.adapters.drivers.hooks.claude_code_hook_adapter post-tool-use"
+          }
+        ],
+        "matcher": "Task"
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONPATH=${CLAUDE_PLUGIN_ROOT}/scripts python3 -m des.adapters.drivers.hooks.claude_code_hook_adapter subagent-stop"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONPATH=${CLAUDE_PLUGIN_ROOT}/scripts python3 -m des.adapters.drivers.hooks.claude_code_hook_adapter session-start"
+          }
+        ],
+        "matcher": "startup"
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "PYTHONPATH=${CLAUDE_PLUGIN_ROOT}/scripts python3 -m des.adapters.drivers.hooks.claude_code_hook_adapter subagent-start"
+          }
+        ]
+      }
+    ]
+  }
+}
